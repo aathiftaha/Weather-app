@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    body {
+      background-image: url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg);
+    }
+    .map {
+      align-items: center;
+    }
+  </style>
+  <body>
+    <h1 class="text-center">Hi User</h1>
+    <h2 class="text-center" style="background-color: grey">
+      <marquee>Weather☁️☁️ info in a minute</marquee>
+    </h2>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="script.js"></script>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Weather</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="weatherinfo.html" target="_blank"
+                >About us</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Choose UI Mode
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Delhi</a></li>
+                <li><a class="dropdown-item" href="#">Chennai</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              id="city"
+              class="form-control me-1"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit" id="submit">
+              Search
+              <img src="https://c.tadst.com/gfx/n/icon/icon-map-pin.png" />
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="map">
+      <img src="https://c.tadst.com/gfx/citymap/in-10.png?9" />
+    </div>
+    <div class="container">
+      <h1 class="text-center">Weather for <span id="cityName"></span></h1>
+      <div class="container">
+        <img
+          src="//c.tadst.com/gfx/n/fl/48/in.png"
+          alt="Flag for India"
+          title="Flag for India"
+          width="48"
+          height="32"
+        />
+      </div>
+      <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Temperature</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  /><span id="temp2"></span>
+                  <small class="text-body-secondary fw-light"></small
+                  ><sup><span>&#8451;</span></sup>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>Temperature is <span id="temp"></span></li>
+                  <li>Min Temperature is <span id="min_temp"></span></li>
+                  <li>Max Temperature is <span id="max_temp"></span></li>
+                </ul>
+                <button
+                  type="button"
+                  class="w-100 btn btn-lg btn-outline-primary"
+                >
+                  Temperature for
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Humidity Info</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-34.svg"
+                    width="50"
+                  /><span id="humidity2"></span>
+                  <small class="text-body-secondary fw-light">%</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>Cloud PCT is <span id="cloud_pct"></span></li>
+                  <li>Feels_like is <span id="feels_like"></span></li>
+                  <li>Humidity is <span id="humidity"></span></li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-primary">
+                  Humidity
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Wind Info</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-14.svg"
+                    width="50"
+                  /><span id="wind_speed2"></span>
+                  <small class="text-body-secondary fw-light">Km/hr</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>Wind Speed is <span id="wind_speed"></span></li>
+                  <li>Sunrise is <span id="sunrise"></span></li>
+                  <li>Sunset is <span id="sunset"></span></li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-primary">
+                  Wind
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="120"
+          height="120"
+          viewBox="0 0 120 120"
+          class="analog-clock isNight"
+        >
+          <g>
+            <path
+              d="M0 60c0 33.137 26.863 60 60 60s60-26.863 60-60S93.137 0 60 0 0 26.863 0 60z"
+              class="analog-clock__face"
+              fill="#f1f1f1"
+            ></path>
+            <g
+              class="analog-clock__marker analog-clock__marker-hour"
+              stroke="#333"
+            >
+              <path d="M60.016 1.016v3"></path>
+              <path d="M60.016 116.016v3"></path>
+              <path d="M89.516 8.92l-1.5 2.598"></path>
+              <path d="M32.016 108.513l-1.5 2.598"></path>
+              <path d="M111.111 30.516l-2.598 1.5"></path>
+              <path d="M11.518 88.016l-2.598 1.5"></path>
+              <path d="M119.016 60.016h-3"></path>
+              <path d="M4.016 60.016h-3"></path>
+              <path d="M111.111 89.516l-2.598-1.5"></path>
+              <path d="M11.518 32.016l-2.598-1.5"></path>
+              <path d="M89.516 111.111l-1.5-2.598"></path>
+              <path d="M32.016 11.518l-1.5-2.598"></path>
+            </g>
+            <g
+              class="analog-clock__marker analog-clock__marker-second"
+              stroke="#aaa"
+            >
+              <path d="M66.183 1.339l-.21 1.989"></path>
+              <path d="M54.057 116.703l-.209 1.989"></path>
+              <path d="M72.282 2.305l-.415 1.956"></path>
+              <path d="M48.165 115.77l-.416 1.956"></path>
+              <path d="M78.248 3.903l-.618 1.902"></path>
+              <path d="M42.402 114.226l-.618 1.902"></path>
+              <path d="M84.013 6.117L83.2 7.944"></path>
+              <path d="M36.832 112.088l-.814 1.827"></path>
+              <path d="M84.013 113.915l-.813-1.827"></path>
+              <path d="M36.832 7.944l-.814-1.827"></path>
+              <path d="M78.248 116.128l-.618-1.902"></path>
+              <path d="M42.402 5.805l-.618-1.902"></path>
+              <path d="M72.282 117.726l-.415-1.956"></path>
+              <path d="M48.165 4.261l-.416-1.956"></path>
+              <path d="M66.183 118.692l-.21-1.989"></path>
+              <path d="M54.057 3.328l-.209-1.99"></path>
+              <path d="M107.748 94.695l-1.618-1.176"></path>
+              <path d="M13.902 26.512l-1.618-1.176"></path>
+              <path d="M103.861 99.494l-1.486-1.338"></path>
+              <path d="M17.656 21.875l-1.486-1.338"></path>
+              <path d="M99.494 103.861l-1.338-1.486"></path>
+              <path d="M21.875 17.656l-1.338-1.486"></path>
+              <path d="M94.695 107.748l-1.176-1.618"></path>
+              <path d="M26.512 13.902l-1.176-1.618"></path>
+              <path d="M118.692 66.183l-1.989-.21"></path>
+              <path d="M3.328 54.057l-1.99-.209"></path>
+              <path d="M117.726 72.282l-1.956-.415"></path>
+              <path d="M4.261 48.165l-1.956-.416"></path>
+              <path d="M116.128 78.248l-1.902-.618"></path>
+              <path d="M5.805 42.402l-1.902-.618"></path>
+              <path d="M113.915 84.013l-1.827-.813"></path>
+              <path d="M7.943 36.832l-1.827-.814"></path>
+              <path d="M113.915 36.018l-1.827.814"></path>
+              <path d="M7.944 83.2l-1.828.813"></path>
+              <path d="M116.128 41.784l-1.902.618"></path>
+              <path d="M5.805 77.63l-1.902.618"></path>
+              <path d="M117.726 47.749l-1.956.416"></path>
+              <path d="M4.261 71.867l-1.956.415"></path>
+              <path d="M118.692 53.849l-1.989.209"></path>
+              <path d="M3.328 65.974l-1.99.209"></path>
+              <path d="M94.695 12.284l-1.176 1.618"></path>
+              <path d="M26.512 106.13l-1.176 1.618"></path>
+              <path d="M99.494 16.17l-1.338 1.486"></path>
+              <path d="M21.875 102.375l-1.338 1.486"></path>
+              <path d="M103.861 20.537l-1.486 1.338"></path>
+              <path d="M17.656 98.156l-1.486 1.338"></path>
+              <path d="M107.748 25.336l-1.618 1.176"></path>
+              <path d="M13.902 93.52l-1.618 1.175"></path>
+            </g>
+            <g class="analog-clock__numbers analog-clock__numbers--major">
+              <text
+                x="60"
+                y="15"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                12
+              </text>
+              <text
+                x="105"
+                y="60"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                3
+              </text>
+              <text
+                x="60"
+                y="105"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                6
+              </text>
+              <text
+                x="15"
+                y="60"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                9
+              </text>
+            </g>
+            <g class="analog-clock__numbers analog-clock__numbers--minor">
+              <text
+                x="82"
+                y="21"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                1
+              </text>
+              <text
+                x="99"
+                y="37"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                2
+              </text>
+              <text
+                x="99"
+                y="82"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                4
+              </text>
+              <text
+                x="82"
+                y="99"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                5
+              </text>
+              <text
+                x="38"
+                y="99"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                7
+              </text>
+              <text
+                x="21"
+                y="82"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                8
+              </text>
+              <text
+                x="21"
+                y="38"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                10
+              </text>
+              <text
+                x="37"
+                y="21"
+                dominant-baseline="middle"
+                text-anchor="middle"
+                font-size="12"
+              >
+                11
+              </text>
+            </g>
+            <g class="analog-clock__hands" transform="translate(60, 60)">
+              <path
+                d="M 0 0 L 0 -50"
+                class="analog-clock__hand analog-clock__hand--minute"
+                data-analogclock-type="minute"
+                style="transform: rotate(100.5deg) translateZ(0px)"
+              ></path>
+              <path
+                d="M 0 0 L 0 -40"
+                class="analog-clock__hand analog-clock__hand--hour"
+                data-analogclock-type="hour"
+                style="transform: rotate(188.375deg) translateZ(0px)"
+              ></path>
+              <path
+                d="M3 0 a3 3 0 11-6 0 3 3 0 016 0z"
+                class="analog-clock__pin"
+              ></path>
+              <path
+                d="M1 00 a1 1 0 10-2 0 1 1 0 002 0z"
+                class="analog-clock__pin-inner"
+              ></path>
+              <path
+                d="M 0 0 L 0 -50"
+                class="analog-clock__hand analog-clock__hand--seconds"
+                data-analogclock-type="seconds"
+                style="transform: rotate(270deg) translateZ(0px)"
+              ></path>
+            </g>
+          </g>
+        </svg>
+
+        <h2 class="display-6 text-center mb-4">
+          Weather of Other Cities
+          <img src="https://c.tadst.com/gfx/w/svg/wt-21.svg" width="50" />
+        </h2>
+
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th style="width: 34%"></th>
+                <th style="width: 20%">
+                  Cloud_pct
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+                <th style="width: 20%">
+                  Feels_like
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+                <th style="width: 20%">
+                  Humidity
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+                <th style="width: 20%">
+                  Max_temp
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+                <th style="width: 20%">
+                  Min_temp
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+                <th style="width: 20%">
+                  Sunrise
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+                <th style="width: 20%">
+                  Sunset
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+                <th style="width: 20%">
+                  Temp
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+                <th style="width: 20%">
+                  Wind_degrees
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+                <th style="width: 20%">
+                  Wind_speed
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-2.svg"
+                    width="50"
+                  />
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start">
+                  Chennai
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-21.svg"
+                    width="50"
+                  />
+                </th>
+                <td><span id="Cloud_pct1"></span></td>
+                <td><span id="Feels_like1"></span></td>
+                <td><span id="Humidity1"></span></td>
+                <td><span id="Max_temp1"></span></td>
+                <td><span id="Min_temp1"></span></td>
+                <td><span id="Sunrise1"></span></td>
+                <td><span id="Sunset1"></span></td>
+                <td><span id="Temp1"></span></td>
+                <td><span id="Wind_degrees1"></span></td>
+                <td><span id="Wind_speed1"></span></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">
+                  Bangalore
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-21.svg"
+                    width="50"
+                  />
+                </th>
+                <td><span id="Cloud_pct2"></span></td>
+                <td><span id="Feels_like2"></span></td>
+                <td><span id="Humidity2"></span></td>
+                <td><span id="Max_temp2"></span></td>
+                <td><span id="Min_temp2"></span></td>
+                <td><span id="Sunrise2"></span></td>
+                <td><span id="Sunset2"></span></td>
+                <td><span id="Temp2"></span></td>
+                <td><span id="Wind_degrees2"></span></td>
+                <td><span id="Wind_speed2"></span></td>
+              </tr>
+            </tbody>
+
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start">
+                  Mumbai
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-21.svg"
+                    width="50"
+                  />
+                </th>
+                <td><span id="Cloud_pct3"></span></td>
+                <td><span id="Feels_like3"></span></td>
+                <td><span id="Humidity3"></span></td>
+                <td><span id="Max_temp3"></span></td>
+                <td><span id="Min_temp3"></span></td>
+                <td><span id="Sunrise3"></span></td>
+                <td><span id="Sunset3"></span></td>
+                <td><span id="Temp3"></span></td>
+                <td><span id="Wind_degrees3"></span></td>
+                <td><span id="Wind_speed3"></span></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">
+                  Calcutta
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-21.svg"
+                    width="50"
+                  />
+                </th>
+                <td><span id="Cloud_pct4"></span></td>
+                <td><span id="Feels_like4"></span></td>
+                <td><span id="Humidity4"></span></td>
+                <td><span id="Max_temp4"></span></td>
+                <td><span id="Min_temp4"></span></td>
+                <td><span id="Sunrise4"></span></td>
+                <td><span id="Sunset4"></span></td>
+                <td><span id="Temp4"></span></td>
+                <td><span id="Wind_degrees4"></span></td>
+                <td><span id="Wind_speed4"></span></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">
+                  Delhi
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-21.svg"
+                    width="50"
+                  />
+                </th>
+                <td><span id="Cloud_pct5"></span></td>
+                <td><span id="Feels_like5"></span></td>
+                <td><span id="Humidity5"></span></td>
+                <td><span id="Max_temp5"></span></td>
+                <td><span id="Min_temp5"></span></td>
+                <td><span id="Sunrise5"></span></td>
+                <td><span id="Sunset5"></span></td>
+                <td><span id="Temp5"></span></td>
+                <td><span id="Wind_degrees5"></span></td>
+                <td><span id="Wind_speed5"></span></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">
+                  Hyderabad
+                  <img
+                    src="https://c.tadst.com/gfx/w/svg/wt-21.svg"
+                    width="50"
+                  />
+                </th>
+                <td><span id="Cloud_pct6"></span></td>
+                <td><span id="Feels_like6"></span></td>
+                <td><span id="Humidity6"></span></td>
+                <td><span id="Max_temp6"></span></td>
+                <td><span id="Min_temp6"></span></td>
+                <td><span id="Sunrise6"></span></td>
+                <td><span id="Sunset6"></span></td>
+                <td><span id="Temp6"></span></td>
+                <td><span id="Wind_degrees6"></span></td>
+                <td><span id="Wind_speed6"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
